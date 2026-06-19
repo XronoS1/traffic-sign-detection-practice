@@ -1,4 +1,3 @@
-"""Add model quality labels for UI selection."""
 
 from django.db import migrations, models
 

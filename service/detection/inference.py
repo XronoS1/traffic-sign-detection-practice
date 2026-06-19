@@ -1,4 +1,3 @@
-"""Inference helpers for image detection."""
 
 from pathlib import Path
 from time import perf_counter
@@ -22,12 +21,10 @@ NUM_FASTERRCNN_CLASSES = 56
 
 
 def resolve_project_path(relative_path: str) -> Path:
-    """Resolve a path relative to the project root."""
     return settings.PROJECT_ROOT / relative_path
 
 
 def load_class_names() -> dict[int, str]:
-    """Load class names from project data.yaml."""
     with settings.DATA_YAML_PATH.open("r", encoding="utf-8") as file:
         data = yaml.safe_load(file) or {}
     names = data.get("names", {})
@@ -39,7 +36,6 @@ def load_class_names() -> dict[int, str]:
 
 
 def create_fasterrcnn_model(weights_path: Path):
-    """Create and load torchvision Faster R-CNN."""
     model = fasterrcnn_resnet50_fpn(weights=None, weights_backbone=None)
     in_features = model.roi_heads.box_predictor.cls_score.in_features
     model.roi_heads.box_predictor = FastRCNNPredictor(in_features, NUM_FASTERRCNN_CLASSES)
@@ -53,7 +49,6 @@ def create_fasterrcnn_model(weights_path: Path):
 
 
 def get_model(model_weight: ModelWeight, weights_path_value: str | None = None):
-    """Return cached detector model."""
     selected_weights_path = weights_path_value or model_weight.weights_path
     cache_key = (model_weight.model_type, selected_weights_path)
     if cache_key in MODEL_CACHE:
@@ -77,14 +72,12 @@ def get_model(model_weight: ModelWeight, weights_path_value: str | None = None):
 
 
 def draw_box(image, box: list[float], color: tuple[int, int, int], text: str) -> None:
-    """Draw bounding box and label."""
     x1, y1, x2, y2 = [int(round(value)) for value in box]
     cv2.rectangle(image, (x1, y1), (x2, y2), color, 2)
     cv2.putText(image, text, (x1, max(18, y1 - 6)), cv2.FONT_HERSHEY_SIMPLEX, 0.55, color, 2)
 
 
 def update_class_counts(class_counts: dict[str, int], class_name: str) -> None:
-    """Increment class counter."""
     class_counts[class_name] = class_counts.get(class_name, 0) + 1
 
 
@@ -94,7 +87,6 @@ def predict_ultralytics_on_frame(
     confidence: float,
     weights_path_value: str | None = None,
 ):
-    """Run Ultralytics inference on one frame and draw detections."""
     model = get_model(model_weight, weights_path_value)
     results = model.predict(
         source=frame,
@@ -128,7 +120,6 @@ def predict_fasterrcnn_on_frame(
     confidence: float,
     weights_path_value: str | None = None,
 ):
-    """Run torchvision Faster R-CNN inference on one frame and draw detections."""
     model, device = get_model(model_weight, weights_path_value)
     class_names = load_class_names()
     rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -161,14 +152,12 @@ def predict_on_frame(
     confidence: float,
     weights_path_value: str | None = None,
 ):
-    """Run selected model type on one OpenCV BGR frame."""
     if model_weight.model_type == ModelWeight.ULTRALYTICS:
         return predict_ultralytics_on_frame(frame, model_weight, confidence, weights_path_value)
     return predict_fasterrcnn_on_frame(frame, model_weight, confidence, weights_path_value)
 
 
 def merge_counts(total: dict[str, int], current: dict[str, int]) -> None:
-    """Merge class counters."""
     for class_name, count in current.items():
         total[class_name] = total.get(class_name, 0) + count
 
@@ -179,7 +168,6 @@ def process_image(
     confidence: float,
     weights_path_value: str | None = None,
 ) -> dict[str, Any]:
-    """Run detection on an image and save annotated output."""
     image = cv2.imread(str(input_path))
     if image is None:
         raise ValueError("Не удалось прочитать изображение.")

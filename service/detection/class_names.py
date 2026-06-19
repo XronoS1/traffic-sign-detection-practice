@@ -1,4 +1,3 @@
-"""Human-readable class names for the road sign dataset."""
 
 
 CLASS_NAME_RU = {
@@ -62,5 +61,4 @@ CLASS_NAME_RU = {
 
 
 def get_display_class_name(class_name: str) -> str:
-    """Return a Russian class name when known."""
     return CLASS_NAME_RU.get(class_name, class_name.replace("_", " ").capitalize())

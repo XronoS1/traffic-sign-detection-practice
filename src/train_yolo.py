@@ -1,4 +1,3 @@
-"""Train YOLO models for reproducible road sign detection experiments."""
 
 import argparse
 import csv
@@ -34,7 +33,6 @@ STRONG_AUGMENTATION_PARAMS = {
 
 
 def parse_args() -> argparse.Namespace:
-    """Parse command-line arguments for YOLO training."""
     parser = argparse.ArgumentParser(description="Train a YOLO detector.")
     parser.add_argument("--model", default="yolov8n.pt", help="YOLO model checkpoint or name.")
     parser.add_argument("--data", default="data/traffic-signs/data.yaml", help="Path to data.yaml.")
@@ -68,7 +66,6 @@ def parse_args() -> argparse.Namespace:
 
 
 def get_augmentation_params(args: argparse.Namespace) -> dict[str, float]:
-    """Return augmentation parameters that should be passed to Ultralytics."""
     if args.strong_aug:
         return STRONG_AUGMENTATION_PARAMS.copy()
 
@@ -78,7 +75,6 @@ def get_augmentation_params(args: argparse.Namespace) -> dict[str, float]:
 def find_training_artifacts(
     experiment_dir: Path,
 ) -> tuple[Path, Path | None, Path | None, Path | None, Path | None]:
-    """Return expected experiment artifacts."""
     best_weights = experiment_dir / "weights" / "best.pt"
     last_weights = experiment_dir / "weights" / "last.pt"
     results_csv = experiment_dir / "results.csv"
@@ -94,7 +90,6 @@ def find_training_artifacts(
 
 
 def file_size_mb(path: Path | None) -> float | None:
-    """Return file size in megabytes if the file exists."""
     if path is None or not path.exists():
         return None
 
@@ -102,12 +97,10 @@ def file_size_mb(path: Path | None) -> float | None:
 
 
 def path_to_string(path: Path | None) -> str | None:
-    """Convert an optional Path to a string for JSON serialization."""
     return str(path) if path is not None else None
 
 
 def get_cuda_device_index(device_arg: Any) -> int | None:
-    """Safely parse a CUDA device index from a CLI device argument."""
     if device_arg is None:
         return None
 
@@ -129,7 +122,6 @@ def get_cuda_device_index(device_arg: Any) -> int | None:
 
 
 def get_hardware_info(device: str, gpu_memory_peak_mb: float | None = None) -> dict[str, Any]:
-    """Collect hardware and software information for the experiment summary."""
     cuda_available = torch.cuda.is_available()
     cuda_device_name = None
     gpu_memory_total_mb = None
@@ -160,7 +152,6 @@ def get_hardware_info(device: str, gpu_memory_peak_mb: float | None = None) -> d
 
 
 def reset_cuda_peak_memory_stats(device_arg: Any) -> None:
-    """Reset CUDA peak memory stats when a valid CUDA device is available."""
     if not torch.cuda.is_available():
         return
 
@@ -181,7 +172,6 @@ def reset_cuda_peak_memory_stats(device_arg: Any) -> None:
 
 
 def read_cuda_peak_memory_mb(device_arg: Any) -> float | None:
-    """Read CUDA peak memory after training when possible."""
     if not torch.cuda.is_available():
         return None
 
@@ -203,12 +193,10 @@ def read_cuda_peak_memory_mb(device_arg: Any) -> float | None:
 
 
 def normalize_column_name(name: str) -> str:
-    """Normalize metric column names from results.csv."""
     return re.sub(r"[^a-z0-9]+", "", name.strip().lower())
 
 
 def to_float(value: str | None) -> float | None:
-    """Convert a CSV value to float without raising on empty cells."""
     if value is None or value.strip() == "":
         return None
 
@@ -219,7 +207,6 @@ def to_float(value: str | None) -> float | None:
 
 
 def find_metric(row: dict[str, str], metric: str) -> float | None:
-    """Find a metric value in an Ultralytics results row using tolerant names."""
     normalized = {normalize_column_name(key): value for key, value in row.items()}
 
     if metric == "precision":
@@ -250,7 +237,6 @@ def find_metric(row: dict[str, str], metric: str) -> float | None:
 
 
 def read_final_metrics(results_csv: Path | None) -> dict[str, float | None]:
-    """Read final detection metrics from Ultralytics results.csv if available."""
     metrics = {
         "final_precision": None,
         "final_recall": None,
@@ -288,7 +274,6 @@ def save_experiment_summary(
     total_training_time_seconds: float,
     gpu_memory_peak_mb: float | None,
 ) -> None:
-    """Save a compact JSON summary for the completed experiment."""
     summary: dict[str, Any] = {
         "experiment_name": args.name,
         "model": args.model,
@@ -327,7 +312,6 @@ def save_experiment_summary(
 
 
 def main() -> None:
-    """Run YOLO training and save reproducible experiment metadata."""
     args = parse_args()
 
     data_yaml = Path(args.data)

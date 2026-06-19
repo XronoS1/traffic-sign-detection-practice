@@ -1,4 +1,3 @@
-"""PyTorch dataset for YOLO-format object detection data."""
 
 from pathlib import Path
 from typing import Any
@@ -14,10 +13,8 @@ IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".bmp", ".webp"}
 
 
 class YoloDetectionDataset(Dataset):
-    """Load YOLO-format annotations for torchvision detection models."""
 
     def __init__(self, data_yaml: str | Path, split: str = "train") -> None:
-        """Create dataset from data.yaml and split name."""
         self.data_yaml = Path(data_yaml)
         self.split = split
         self.config = self._load_config(self.data_yaml)
@@ -72,11 +69,9 @@ class YoloDetectionDataset(Dataset):
         )
 
     def __len__(self) -> int:
-        """Return number of images."""
         return len(self.image_paths)
 
     def __getitem__(self, index: int) -> tuple[torch.Tensor, dict[str, torch.Tensor]]:
-        """Return image tensor and Faster R-CNN target dict."""
         image_path = self.image_paths[index]
         image = Image.open(image_path).convert("RGB")
         image_width, image_height = image.size
@@ -111,7 +106,6 @@ class YoloDetectionDataset(Dataset):
         image_width: int,
         image_height: int,
     ) -> tuple[list[list[float]], list[int]]:
-        """Read one YOLO label file and convert boxes to pixel xyxy."""
         if not label_path.exists():
             return [], []
 

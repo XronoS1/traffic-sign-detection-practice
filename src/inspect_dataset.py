@@ -1,8 +1,3 @@
-"""Inspect a road sign dataset in YOLO format.
-
-The script validates the expected directory layout, reads data.yaml, checks
-image/label pairs, and verifies basic YOLO annotation rules.
-"""
 
 import argparse
 from pathlib import Path
@@ -21,7 +16,6 @@ REQUIRED_DIRS = (
 
 
 def parse_args() -> argparse.Namespace:
-    """Parse command-line arguments."""
     parser = argparse.ArgumentParser(description="Inspect YOLO-format road sign dataset.")
     parser.add_argument(
         "--data",
@@ -34,7 +28,6 @@ def parse_args() -> argparse.Namespace:
 
 
 def load_data_yaml(path: Path, errors: list[str]) -> dict[str, Any]:
-    """Load data.yaml and collect parsing errors."""
     if not path.exists():
         errors.append(f"Missing data.yaml: {path}")
         return {}
@@ -54,7 +47,6 @@ def load_data_yaml(path: Path, errors: list[str]) -> dict[str, Any]:
 
 
 def list_files(directory: Path, suffixes: set[str]) -> list[Path]:
-    """Return files from a directory filtered by suffix."""
     if not directory.exists():
         return []
 
@@ -66,7 +58,6 @@ def list_files(directory: Path, suffixes: set[str]) -> list[Path]:
 
 
 def print_yaml_summary(config: dict[str, Any]) -> None:
-    """Print selected fields from data.yaml."""
     print("\ndata.yaml:")
     print(f"  train: {config.get('train', 'not specified')}")
     print(f"  val: {config.get('val', config.get('valid', 'not specified'))}")
@@ -79,7 +70,6 @@ def print_yaml_summary(config: dict[str, Any]) -> None:
 
 
 def resolve_class_count(config: dict[str, Any], errors: list[str]) -> int | None:
-    """Resolve the number of classes from data.yaml."""
     nc = config.get("nc")
 
     if isinstance(nc, int):
@@ -100,7 +90,6 @@ def resolve_class_count(config: dict[str, Any], errors: list[str]) -> int | None
 
 
 def check_required_paths(data_root: Path, errors: list[str]) -> None:
-    """Check that the required YOLO directories exist."""
     for relative_path in REQUIRED_DIRS:
         path = data_root / relative_path
         if not path.exists():
@@ -115,7 +104,6 @@ def check_image_label_pairs(
     label_files: list[Path],
     errors: list[str],
 ) -> None:
-    """Check that each image has a matching label file with the same stem."""
     label_stems = {path.stem for path in label_files}
     image_stems = {path.stem for path in image_files}
 
@@ -135,7 +123,6 @@ def parse_label_line(
     class_count: int | None,
     errors: list[str],
 ) -> None:
-    """Validate one YOLO annotation line."""
     parts = line.split()
     if len(parts) != 5:
         errors.append(
@@ -176,7 +163,6 @@ def check_label_file(
     class_count: int | None,
     errors: list[str],
 ) -> int:
-    """Validate all annotation lines in a label file."""
     before = len(errors)
 
     try:
@@ -200,7 +186,6 @@ def inspect_split(
     class_count: int | None,
     errors: list[str],
 ) -> tuple[int, int, int, int]:
-    """Inspect one dataset split and return counts."""
     image_dir = data_root / split / "images"
     label_dir = data_root / split / "labels"
     image_files = list_files(image_dir, IMAGE_SUFFIXES)
@@ -218,7 +203,6 @@ def inspect_split(
 
 
 def main() -> None:
-    """Run dataset inspection and print a report."""
     args = parse_args()
     data_root = Path(args.data_root)
     data_yaml = data_root / "data.yaml"

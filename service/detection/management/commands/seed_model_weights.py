@@ -1,4 +1,3 @@
-"""Seed selectable model weights."""
 
 from django.core.management.base import BaseCommand
 

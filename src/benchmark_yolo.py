@@ -1,4 +1,3 @@
-"""Benchmark YOLO inference latency and throughput on a folder of images."""
 
 import argparse
 import json
@@ -17,7 +16,6 @@ WARMUP_RUNS = 5
 
 
 def parse_args() -> argparse.Namespace:
-    """Parse command-line arguments for YOLO inference benchmarking."""
     parser = argparse.ArgumentParser(description="Benchmark YOLO inference.")
     parser.add_argument("--weights", required=True, help="Path to trained YOLO weights.")
     parser.add_argument("--data", default="data/traffic-signs/data.yaml", help="Path to data.yaml.")
@@ -31,7 +29,6 @@ def parse_args() -> argparse.Namespace:
 
 
 def list_images(images_dir: Path, max_images: int) -> list[Path]:
-    """Collect image files for benchmarking."""
     if not images_dir.exists():
         raise FileNotFoundError(f"Image directory not found: {images_dir}")
     if not images_dir.is_dir():
@@ -46,14 +43,12 @@ def list_images(images_dir: Path, max_images: int) -> list[Path]:
 
 
 def file_size_mb(path: Path) -> float | None:
-    """Return file size in megabytes if the file exists."""
     if not path.exists():
         return None
     return round(path.stat().st_size / (1024 * 1024), 3)
 
 
 def parse_device_index(device: str) -> int:
-    """Extract a CUDA device index from a device argument."""
     if device.lower().startswith("cuda:"):
         return int(device.split(":", maxsplit=1)[1])
     if device.isdigit():
@@ -62,33 +57,28 @@ def parse_device_index(device: str) -> int:
 
 
 def cuda_device_name(device: str) -> str | None:
-    """Return CUDA device name when available."""
     if not torch.cuda.is_available() or device.lower() == "cpu":
         return None
     return torch.cuda.get_device_name(parse_device_index(device))
 
 
 def synchronize_if_cuda(device: str) -> None:
-    """Synchronize CUDA timing when running on GPU."""
     if torch.cuda.is_available() and device.lower() != "cpu":
         torch.cuda.synchronize(parse_device_index(device))
 
 
 def reset_peak_memory_if_cuda(device: str) -> None:
-    """Reset peak GPU memory stats before measured inference."""
     if torch.cuda.is_available() and device.lower() != "cpu":
         torch.cuda.reset_peak_memory_stats(parse_device_index(device))
 
 
 def peak_memory_mb(device: str) -> float | None:
-    """Return peak GPU memory usage in megabytes."""
     if not torch.cuda.is_available() or device.lower() == "cpu":
         return None
     return round(torch.cuda.max_memory_allocated(parse_device_index(device)) / (1024 * 1024), 3)
 
 
 def run_prediction(model: YOLO, image_path: Path, args: argparse.Namespace):
-    """Run one YOLO prediction."""
     return model.predict(
         source=str(image_path),
         imgsz=args.imgsz,
@@ -99,7 +89,6 @@ def run_prediction(model: YOLO, image_path: Path, args: argparse.Namespace):
 
 
 def count_detections(results: list[Any]) -> int:
-    """Count detections returned by Ultralytics for one image."""
     if not results:
         return 0
     boxes = getattr(results[0], "boxes", None)
@@ -107,7 +96,6 @@ def count_detections(results: list[Any]) -> int:
 
 
 def main() -> None:
-    """Run benchmark and save JSON report."""
     args = parse_args()
     weights = Path(args.weights)
     data_yaml = Path(args.data)

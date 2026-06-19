@@ -1,4 +1,3 @@
-"""Views for the road sign detection service."""
 
 from collections import Counter
 from pathlib import Path
@@ -18,14 +17,12 @@ from .video import process_video
 
 
 def relative_media_path(path: Path) -> str:
-    """Convert an absolute media path to a FileField-compatible relative path."""
     from django.conf import settings
 
     return str(path.relative_to(settings.MEDIA_ROOT)).replace("\\", "/")
 
 
 def display_detected_classes(detected_classes: dict) -> list[tuple[str, int]]:
-    """Return detected classes sorted by count with Russian display names."""
     return sorted(
         ((get_display_class_name(class_name), count) for class_name, count in (detected_classes or {}).items()),
         key=lambda item: item[1],
@@ -34,12 +31,10 @@ def display_detected_classes(detected_classes: dict) -> list[tuple[str, int]]:
 
 
 def home(request):
-    """Home page."""
     return render(request, "detection/home.html")
 
 
 def register(request):
-    """Register a user with email and password."""
     if request.method == "POST":
         form = EmailRegistrationForm(request.POST)
         if form.is_valid():
@@ -54,14 +49,12 @@ def register(request):
 
 @login_required
 def profile(request):
-    """User profile page."""
     runs_count = DetectionRun.objects.filter(user=request.user).count()
     return render(request, "detection/profile.html", {"runs_count": runs_count})
 
 
 @login_required
 def detect(request):
-    """Upload file and run detection synchronously."""
     if request.method == "POST":
         form = DetectionRunForm(request.POST, request.FILES)
         if form.is_valid():
@@ -107,7 +100,6 @@ def detect(request):
 
 @login_required
 def run_detail(request, run_id: int):
-    """Show one run owned by current user."""
     run = get_object_or_404(DetectionRun, id=run_id)
     if run.user_id != request.user.id:
         raise Http404("Запуск не найден.")
@@ -120,14 +112,12 @@ def run_detail(request, run_id: int):
 
 @login_required
 def history(request):
-    """Show user's detection history."""
     runs = DetectionRun.objects.filter(user=request.user).select_related("model_weight")
     return render(request, "detection/history.html", {"runs": runs})
 
 
 @login_required
 def stats(request):
-    """Show user's aggregate statistics."""
     runs = DetectionRun.objects.filter(user=request.user)
     done_runs = runs.filter(status=DetectionRun.DONE)
     model_distribution = (

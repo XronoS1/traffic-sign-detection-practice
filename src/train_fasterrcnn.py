@@ -1,4 +1,3 @@
-"""Train Faster R-CNN ResNet50-FPN on a YOLO-format road sign dataset."""
 
 import argparse
 import csv
@@ -35,7 +34,6 @@ DEFAULT_NUM_CLASSES = 56
 
 
 def load_config(config_path: str | Path | None) -> dict[str, Any]:
-    """Load YAML config if it exists; otherwise return an empty config."""
     if config_path is None:
         return {}
 
@@ -50,7 +48,6 @@ def load_config(config_path: str | Path | None) -> dict[str, Any]:
 
 
 def load_data_config(data_yaml: Path) -> dict[str, Any]:
-    """Load data.yaml."""
     if not data_yaml.exists():
         raise FileNotFoundError(f"data.yaml not found: {data_yaml}")
 
@@ -63,14 +60,12 @@ def load_data_config(data_yaml: Path) -> dict[str, Any]:
 
 
 def ensure_dir(path: str | Path) -> Path:
-    """Create a directory if needed."""
     directory = Path(path)
     directory.mkdir(parents=True, exist_ok=True)
     return directory
 
 
 def parse_args() -> argparse.Namespace:
-    """Parse CLI arguments."""
     parser = argparse.ArgumentParser(description="Train Faster R-CNN for road sign detection.")
     parser.add_argument("--config", default="configs/fasterrcnn.yaml", help="Optional YAML config path.")
     parser.add_argument("--data", default=None, help="Path to dataset data.yaml.")
@@ -91,19 +86,16 @@ def value_from_cli_or_config(
     key: str,
     default: Any,
 ) -> Any:
-    """Resolve a setting from CLI, config, or default."""
     if cli_value is not None:
         return cli_value
     return config.get(section, {}).get(key, default)
 
 
 def collate_fn(batch):
-    """Collate detection batch as lists of images and targets."""
     return tuple(zip(*batch))
 
 
 def get_device(device_arg: str) -> torch.device:
-    """Resolve training device safely."""
     if device_arg == "cuda" and not torch.cuda.is_available():
         print("Warning: CUDA requested but unavailable; using CPU.")
         return torch.device("cpu")
@@ -111,14 +103,12 @@ def get_device(device_arg: str) -> torch.device:
 
 
 def get_cuda_device_name(device: torch.device) -> str | None:
-    """Return CUDA device name if available."""
     if device.type != "cuda" or not torch.cuda.is_available():
         return None
     return torch.cuda.get_device_name(cuda_device_index(device))
 
 
 def get_gpu_total_memory_mb(device: torch.device) -> float | None:
-    """Return total GPU memory in MB."""
     if device.type != "cuda" or not torch.cuda.is_available():
         return None
     return round(
@@ -128,19 +118,16 @@ def get_gpu_total_memory_mb(device: torch.device) -> float | None:
 
 
 def cuda_device_index(device: torch.device) -> int:
-    """Return an explicit CUDA device index."""
     return device.index if device.index is not None else 0
 
 
 def reset_peak_memory(device: torch.device) -> None:
-    """Reset CUDA peak memory stats if possible."""
     if device.type == "cuda" and torch.cuda.is_available():
         torch.cuda.set_device(cuda_device_index(device))
         torch.cuda.reset_peak_memory_stats()
 
 
 def get_peak_memory_mb(device: torch.device) -> float | None:
-    """Return peak GPU memory in MB."""
     if device.type != "cuda" or not torch.cuda.is_available():
         return None
     torch.cuda.set_device(cuda_device_index(device))
@@ -148,14 +135,12 @@ def get_peak_memory_mb(device: torch.device) -> float | None:
 
 
 def model_size_mb(path: Path) -> float | None:
-    """Return model checkpoint size in MB."""
     if not path.exists():
         return None
     return round(path.stat().st_size / (1024 * 1024), 3)
 
 
 def create_model(num_classes: int):
-    """Create Faster R-CNN ResNet50-FPN and replace the classification head."""
     try:
         weights = FasterRCNN_ResNet50_FPN_Weights.DEFAULT
         model = fasterrcnn_resnet50_fpn(weights=weights)
@@ -176,7 +161,6 @@ def train_one_epoch(
     device: torch.device,
     epoch: int,
 ) -> float:
-    """Train one epoch and return average loss."""
     model.train()
     total_loss = 0.0
     batches = 0
@@ -202,7 +186,6 @@ def train_one_epoch(
 
 
 def save_checkpoint(path: Path, model, optimizer: SGD, epoch: int, loss: float) -> None:
-    """Save a training checkpoint."""
     torch.save(
         {
             "epoch": epoch,
@@ -215,7 +198,6 @@ def save_checkpoint(path: Path, model, optimizer: SGD, epoch: int, loss: float) 
 
 
 def append_log_row(log_path: Path, row: dict[str, Any]) -> None:
-    """Append one row to training_log.csv."""
     file_exists = log_path.exists()
     with log_path.open("a", encoding="utf-8", newline="") as file:
         writer = csv.DictWriter(
@@ -241,7 +223,6 @@ def save_summary(
     best_weights_path: Path,
     last_weights_path: Path,
 ) -> None:
-    """Save experiment_summary.json."""
     summary = {
         "model_name": "fasterrcnn_resnet50_fpn",
         "backbone": backbone,
@@ -276,7 +257,6 @@ def save_summary(
 
 
 def main() -> None:
-    """Run Faster R-CNN training."""
     args = parse_args()
     config = load_config(args.config)
 

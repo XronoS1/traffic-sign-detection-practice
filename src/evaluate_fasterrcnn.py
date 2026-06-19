@@ -1,4 +1,3 @@
-"""Evaluate and benchmark a torchvision Faster R-CNN checkpoint."""
 
 import argparse
 import csv
@@ -26,7 +25,6 @@ NUM_CLASSES = 56
 
 
 def parse_args() -> argparse.Namespace:
-    """Parse command-line arguments."""
     parser = argparse.ArgumentParser(description="Evaluate Faster R-CNN on YOLO-format validation data.")
     parser.add_argument("--weights", required=True, help="Path to Faster R-CNN checkpoint.")
     parser.add_argument("--data", default="data/traffic-signs/data.yaml", help="Path to data.yaml.")
@@ -41,12 +39,10 @@ def parse_args() -> argparse.Namespace:
 
 
 def collate_fn(batch):
-    """Collate detection batch."""
     return tuple(zip(*batch))
 
 
 def load_class_names(data_yaml: Path) -> dict[int, str]:
-    """Load class names from data.yaml."""
     with data_yaml.open("r", encoding="utf-8") as file:
         config = yaml.safe_load(file) or {}
 
@@ -59,7 +55,6 @@ def load_class_names(data_yaml: Path) -> dict[int, str]:
 
 
 def get_device(device_arg: str) -> torch.device:
-    """Resolve evaluation device safely."""
     if device_arg == "cuda" and not torch.cuda.is_available():
         print("Warning: CUDA requested but unavailable; using CPU.")
         return torch.device("cpu")
@@ -67,7 +62,6 @@ def get_device(device_arg: str) -> torch.device:
 
 
 def create_model(num_classes: int):
-    """Create Faster R-CNN with a replaced classifier head."""
     model = fasterrcnn_resnet50_fpn(weights=None, weights_backbone=None)
     in_features = model.roi_heads.box_predictor.cls_score.in_features
     model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes)
@@ -75,7 +69,6 @@ def create_model(num_classes: int):
 
 
 def load_checkpoint(model, weights_path: Path, device: torch.device) -> None:
-    """Load model weights from a training checkpoint."""
     if not weights_path.exists():
         raise FileNotFoundError(f"Weights not found: {weights_path}")
 
@@ -85,7 +78,6 @@ def load_checkpoint(model, weights_path: Path, device: torch.device) -> None:
 
 
 def compute_iou(box_a: list[float], box_b: list[float]) -> float:
-    """Compute IoU for two xyxy boxes."""
     x1 = max(box_a[0], box_b[0])
     y1 = max(box_a[1], box_b[1])
     x2 = min(box_a[2], box_b[2])
@@ -102,7 +94,6 @@ def match_predictions(
     predictions: list[dict[str, Any]],
     iou_threshold: float,
 ) -> tuple[list[tuple[int, int, float]], list[int], list[int], list[dict[str, Any]]]:
-    """Match predictions to ground truth by class and IoU."""
     candidates = []
     for pred_index, pred in enumerate(predictions):
         for gt_index, gt in enumerate(ground_truth):
@@ -127,7 +118,6 @@ def match_predictions(
 
 
 def best_iou_for_prediction(prediction: dict[str, Any], ground_truth: list[dict[str, Any]]) -> float:
-    """Find best IoU between one prediction and any GT box."""
     if not ground_truth:
         return 0.0
     return max(compute_iou(prediction["box"], gt["box"]) for gt in ground_truth)
@@ -139,7 +129,6 @@ def build_errors(
     false_positives: list[int],
     false_negatives: list[int],
 ) -> list[dict[str, Any]]:
-    """Build error rows for FP and FN cases."""
     errors = []
     for pred_index in false_positives:
         pred = predictions[pred_index]
@@ -166,14 +155,12 @@ def build_errors(
 
 
 def tensor_target_to_list(target: dict[str, torch.Tensor]) -> list[dict[str, Any]]:
-    """Convert target tensors to plain dictionaries."""
     boxes = target["boxes"].detach().cpu().tolist()
     labels = target["labels"].detach().cpu().tolist()
     return [{"box": box, "label": int(label)} for box, label in zip(boxes, labels)]
 
 
 def output_to_predictions(output: dict[str, torch.Tensor], conf: float) -> list[dict[str, Any]]:
-    """Convert model output tensors to filtered prediction dictionaries."""
     boxes = output["boxes"].detach().cpu().tolist()
     labels = output["labels"].detach().cpu().tolist()
     scores = output["scores"].detach().cpu().tolist()
@@ -185,7 +172,6 @@ def output_to_predictions(output: dict[str, torch.Tensor], conf: float) -> list[
 
 
 def draw_box(image, box: list[float], color: tuple[int, int, int], label: str) -> None:
-    """Draw one box on an image."""
     x1, y1, x2, y2 = [int(round(value)) for value in box]
     cv2.rectangle(image, (x1, y1), (x2, y2), color, 2)
     cv2.putText(image, label, (x1, max(15, y1 - 5)), cv2.FONT_HERSHEY_SIMPLEX, 0.45, color, 1)
@@ -198,7 +184,6 @@ def save_visualization(
     predictions: list[dict[str, Any]],
     class_names: dict[int, str],
 ) -> None:
-    """Save GT/prediction visualization."""
     image = cv2.imread(str(image_path))
     if image is None:
         return
@@ -221,20 +206,17 @@ def save_visualization(
 
 
 def model_size_mb(path: Path) -> float | None:
-    """Return checkpoint size in MB."""
     if not path.exists():
         return None
     return round(path.stat().st_size / (1024 * 1024), 3)
 
 
 def synchronize_if_cuda(device: torch.device) -> None:
-    """Synchronize CUDA before/after timing."""
     if device.type == "cuda" and torch.cuda.is_available():
         torch.cuda.synchronize()
 
 
 def main() -> None:
-    """Evaluate Faster R-CNN and save benchmark/error-analysis outputs."""
     args = parse_args()
     weights_path = Path(args.weights)
     data_yaml = Path(args.data)

@@ -1,4 +1,3 @@
-"""Train RT-DETR for road sign detection with Ultralytics."""
 
 import argparse
 import json
@@ -9,7 +8,6 @@ from ultralytics import RTDETR
 
 
 def parse_args() -> argparse.Namespace:
-    """Parse command-line arguments for RT-DETR training."""
     parser = argparse.ArgumentParser(description="Train an RT-DETR detector.")
     parser.add_argument("--model", default="rtdetr-l.pt", help="RT-DETR model checkpoint or name.")
     parser.add_argument("--data", default="data/traffic-signs/data.yaml", help="Path to data.yaml.")
@@ -26,7 +24,6 @@ def parse_args() -> argparse.Namespace:
 def find_training_artifacts(
     experiment_dir: Path,
 ) -> tuple[Path, Path | None, Path | None, Path | None, Path]:
-    """Return expected experiment artifact paths."""
     best_weights = experiment_dir / "weights" / "best.pt"
     last_weights = experiment_dir / "weights" / "last.pt"
     results_csv = experiment_dir / "results.csv"
@@ -42,7 +39,6 @@ def find_training_artifacts(
 
 
 def get_experiment_dir(training_result: Any, model: RTDETR, fallback: Path) -> Path:
-    """Resolve the actual Ultralytics experiment directory."""
     result_save_dir = getattr(training_result, "save_dir", None)
     if result_save_dir is not None:
         return Path(result_save_dir)
@@ -62,7 +58,6 @@ def save_experiment_summary(
     last_weights: Path | None,
     results_csv: Path | None,
 ) -> None:
-    """Save a compact RT-DETR experiment summary."""
     summary = {
         "experiment_name": args.name,
         "model": args.model,
@@ -85,7 +80,6 @@ def save_experiment_summary(
 
 
 def main() -> None:
-    """Run RT-DETR training and print key output artifacts."""
     args = parse_args()
 
     data_yaml = Path(args.data)

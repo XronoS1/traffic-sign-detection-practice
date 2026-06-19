@@ -1,4 +1,3 @@
-"""Collect training summaries and benchmark reports into one CSV table."""
 
 import argparse
 import csv
@@ -34,7 +33,6 @@ OUTPUT_COLUMNS = [
 
 
 def parse_args() -> argparse.Namespace:
-    """Parse command-line arguments."""
     parser = argparse.ArgumentParser(description="Collect experiment results into a CSV table.")
     parser.add_argument("--runs-dir", default="outputs/runs", help="Directory with training runs.")
     parser.add_argument("--benchmarks-dir", default="outputs/reports", help="Directory with benchmark JSON files.")
@@ -43,21 +41,18 @@ def parse_args() -> argparse.Namespace:
 
 
 def load_json(path: Path) -> dict[str, Any]:
-    """Read a JSON file."""
     with path.open("r", encoding="utf-8") as file:
         data = json.load(file)
     return data if isinstance(data, dict) else {}
 
 
 def find_training_summaries(runs_dir: Path) -> list[Path]:
-    """Find experiment_summary.json files inside run directories."""
     if not runs_dir.exists():
         return []
     return sorted(runs_dir.glob("*/experiment_summary.json"))
 
 
 def find_benchmark_reports(benchmarks_dir: Path) -> list[dict[str, Any]]:
-    """Load benchmark JSON files from the reports directory."""
     if not benchmarks_dir.exists():
         return []
 
@@ -73,7 +68,6 @@ def find_benchmark_reports(benchmarks_dir: Path) -> list[dict[str, Any]]:
 
 
 def experiment_name_from_weights(weights: str | None) -> str | None:
-    """Infer experiment name from a weights path like outputs/runs/name/weights/best.pt."""
     if not weights:
         return None
     parts = Path(weights).parts
@@ -88,7 +82,6 @@ def find_matching_benchmark(
     experiment_name: str,
     benchmarks: list[dict[str, Any]],
 ) -> dict[str, Any]:
-    """Find a benchmark report related to an experiment."""
     for benchmark in benchmarks:
         if experiment_name_from_weights(benchmark.get("weights")) == experiment_name:
             return benchmark
@@ -102,7 +95,6 @@ def find_matching_benchmark(
 
 
 def build_row(summary: dict[str, Any], benchmark: dict[str, Any]) -> dict[str, Any]:
-    """Build one CSV row from training and benchmark data."""
     return {
         "experiment_name": summary.get("experiment_name"),
         "model": summary.get("model"),
@@ -130,7 +122,6 @@ def build_row(summary: dict[str, Any], benchmark: dict[str, Any]) -> dict[str, A
 
 
 def main() -> None:
-    """Collect all available experiment results into a CSV file."""
     args = parse_args()
     runs_dir = Path(args.runs_dir)
     benchmarks_dir = Path(args.benchmarks_dir)

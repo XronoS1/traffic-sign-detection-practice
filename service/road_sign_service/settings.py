@@ -1,4 +1,3 @@
-"""Django settings for the road sign detection service."""
 
 import os
 from pathlib import Path

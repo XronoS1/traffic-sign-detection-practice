@@ -1,4 +1,3 @@
-"""Video processing helpers."""
 
 from pathlib import Path
 import subprocess
@@ -18,7 +17,6 @@ FRAME_STRIDE = 2
 
 
 def transcode_to_browser_mp4(raw_output_path: Path, final_output_path: Path) -> None:
-    """Transcode OpenCV output to browser-compatible H.264 MP4."""
     cmd = [
         settings.FFMPEG_BINARY,
         "-y",
@@ -52,7 +50,6 @@ def process_video(
     confidence: float,
     weights_path_value: str | None = None,
 ) -> dict[str, Any]:
-    """Run detection on a video and save an annotated MP4."""
     capture = cv2.VideoCapture(str(input_path))
     if not capture.isOpened():
         raise ValueError("Не удалось открыть видео.")

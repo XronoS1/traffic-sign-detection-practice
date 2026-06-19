@@ -1,4 +1,3 @@
-"""Initial detection app migration."""
 
 import django.db.models.deletion
 from django.conf import settings

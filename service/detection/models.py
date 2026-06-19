@@ -1,11 +1,9 @@
-"""Database models for detection runs."""
 
 from django.conf import settings
 from django.db import models
 
 
 class ModelWeight(models.Model):
-    """A selectable detector checkpoint."""
 
     ULTRALYTICS = "ultralytics"
     TORCHVISION_FASTERRCNN = "torchvision_fasterrcnn"
@@ -41,14 +39,12 @@ class ModelWeight(models.Model):
         return f"{self.title} — {self.get_quality_label_display().lower()}"
 
     def get_weights_path(self, variant: str) -> str:
-        """Return selected best/last weights path with backward compatibility."""
         if variant == "last":
             return self.last_weights_path or self.weights_path
         return self.best_weights_path or self.weights_path
 
 
 class DetectionRun(models.Model):
-    """One user-submitted image or video detection run."""
 
     IMAGE = "image"
     VIDEO = "video"

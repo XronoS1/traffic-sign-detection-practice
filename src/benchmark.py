@@ -1,4 +1,3 @@
-"""Benchmark object detection models on images or videos from a YAML configuration."""
 
 import argparse
 
@@ -12,7 +11,6 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> None:
-    """Load config and print benchmark settings."""
     config = load_config(parse_args().config)
     output_dir = ensure_dir(config["benchmark"]["output_dir"])
 

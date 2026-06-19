@@ -1,4 +1,3 @@
-"""URL configuration for the road sign detection service."""
 
 from django.conf import settings
 from django.conf.urls.static import static

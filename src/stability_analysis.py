@@ -1,4 +1,3 @@
-"""Analyze latency and FPS stability from a YOLO benchmark JSON file."""
 
 import argparse
 import json
@@ -8,7 +7,6 @@ from pathlib import Path
 
 
 def parse_args() -> argparse.Namespace:
-    """Parse command-line arguments."""
     parser = argparse.ArgumentParser(description="Analyze benchmark stability with bootstrap CIs.")
     parser.add_argument("--benchmark-json", required=True, help="Path to benchmark JSON.")
     parser.add_argument("--output", default="outputs/reports/stability.json", help="Output JSON path.")
@@ -17,7 +15,6 @@ def parse_args() -> argparse.Namespace:
 
 
 def load_latencies(path: Path) -> list[float]:
-    """Load latencies_ms from benchmark JSON."""
     with path.open("r", encoding="utf-8") as file:
         data = json.load(file)
 
@@ -29,7 +26,6 @@ def load_latencies(path: Path) -> list[float]:
 
 
 def percentile(values: list[float], q: float) -> float:
-    """Return percentile using nearest-rank interpolation."""
     if not values:
         raise ValueError("Cannot compute percentile for an empty list.")
     ordered = sorted(values)
@@ -38,7 +34,6 @@ def percentile(values: list[float], q: float) -> float:
 
 
 def bootstrap_mean_ci(values: list[float], iterations: int) -> tuple[float, float]:
-    """Compute a 95% bootstrap confidence interval for the mean."""
     means = []
     for _ in range(iterations):
         sample = [random.choice(values) for _ in values]
@@ -47,7 +42,6 @@ def bootstrap_mean_ci(values: list[float], iterations: int) -> tuple[float, floa
 
 
 def main() -> None:
-    """Run stability analysis and save JSON report."""
     args = parse_args()
     benchmark_path = Path(args.benchmark_json)
     output_path = Path(args.output)

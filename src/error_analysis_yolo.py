@@ -1,4 +1,3 @@
-"""Analyze YOLO successes and errors on validation images."""
 
 import argparse
 import csv
@@ -17,7 +16,6 @@ PRED_COLOR = (0, 0, 255)
 
 
 def parse_args() -> argparse.Namespace:
-    """Parse command-line arguments."""
     parser = argparse.ArgumentParser(description="Analyze YOLO detection errors.")
     parser.add_argument("--weights", required=True, help="Path to trained YOLO weights.")
     parser.add_argument("--data", default="data/traffic-signs/data.yaml", help="Path to data.yaml.")
@@ -33,7 +31,6 @@ def parse_args() -> argparse.Namespace:
 
 
 def load_class_names(data_yaml: Path) -> dict[int, str]:
-    """Load class names from data.yaml."""
     if not data_yaml.exists():
         raise FileNotFoundError(f"data.yaml not found: {data_yaml}")
 
@@ -49,7 +46,6 @@ def load_class_names(data_yaml: Path) -> dict[int, str]:
 
 
 def list_images(images_dir: Path, max_images: int) -> list[Path]:
-    """Return image files from a directory."""
     if not images_dir.exists():
         raise FileNotFoundError(f"Image directory not found: {images_dir}")
 
@@ -62,7 +58,6 @@ def list_images(images_dir: Path, max_images: int) -> list[Path]:
 
 
 def yolo_to_xyxy(values: list[float], image_width: int, image_height: int) -> list[float]:
-    """Convert normalized YOLO bbox to pixel xyxy."""
     x_center, y_center, width, height = values
     x1 = (x_center - width / 2) * image_width
     y1 = (y_center - height / 2) * image_height
@@ -72,7 +67,6 @@ def yolo_to_xyxy(values: list[float], image_width: int, image_height: int) -> li
 
 
 def read_ground_truth(label_path: Path, image_width: int, image_height: int) -> list[dict[str, Any]]:
-    """Read YOLO labels for one image."""
     if not label_path.exists():
         return []
 
@@ -88,7 +82,6 @@ def read_ground_truth(label_path: Path, image_width: int, image_height: int) -> 
 
 
 def run_predictions(model: YOLO, image_path: Path, args: argparse.Namespace) -> list[dict[str, Any]]:
-    """Run YOLO inference and return prediction dictionaries."""
     results = model.predict(
         source=str(image_path),
         imgsz=args.imgsz,
@@ -113,7 +106,6 @@ def run_predictions(model: YOLO, image_path: Path, args: argparse.Namespace) -> 
 
 
 def compute_iou(box_a: list[float], box_b: list[float]) -> float:
-    """Compute IoU for two xyxy boxes."""
     x1 = max(box_a[0], box_b[0])
     y1 = max(box_a[1], box_b[1])
     x2 = min(box_a[2], box_b[2])
@@ -131,7 +123,6 @@ def match_predictions(
     predictions: list[dict[str, Any]],
     iou_threshold: float,
 ) -> tuple[list[tuple[int, int]], list[int], list[int], list[int], list[int]]:
-    """Match predictions to ground truth and return TP/FP/FN details."""
     matches = []
     used_gt: set[int] = set()
     used_pred: set[int] = set()
@@ -168,7 +159,6 @@ def match_predictions(
 
 
 def error_reason(error_type: str) -> str:
-    """Return a short human-readable explanation for an error type."""
     reasons = {
         "false_positive": "сложный фон или похожий объект привел к ложному срабатыванию",
         "false_negative": "маленький объект, перекрытие или низкая видимость могли привести к пропуску",
@@ -184,7 +174,6 @@ def draw_box(
     color: tuple[int, int, int],
     label: str,
 ) -> None:
-    """Draw one bbox and label on an image."""
     x1, y1, x2, y2 = [int(round(value)) for value in bbox]
     cv2.rectangle(image, (x1, y1), (x2, y2), color, 2)
     cv2.putText(image, label, (x1, max(15, y1 - 5)), cv2.FONT_HERSHEY_SIMPLEX, 0.45, color, 1)
@@ -197,7 +186,6 @@ def save_visualization(
     predictions: list[dict[str, Any]],
     class_names: dict[int, str],
 ) -> None:
-    """Save image visualization with GT and predicted boxes."""
     image = cv2.imread(str(image_path))
     if image is None:
         return
@@ -217,7 +205,6 @@ def save_visualization(
 
 
 def main() -> None:
-    """Run error analysis and save JSON, CSV, and visual examples."""
     args = parse_args()
     weights = Path(args.weights)
     data_yaml = Path(args.data)

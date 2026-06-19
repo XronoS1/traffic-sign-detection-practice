@@ -1,4 +1,3 @@
-"""WSGI config."""
 
 import os
 

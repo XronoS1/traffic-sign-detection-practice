@@ -5,7 +5,6 @@ import yaml
 
 
 def load_config(config_path: str | Path) -> dict[str, Any]:
-    """Load a YAML configuration file."""
     path = Path(config_path)
     if not path.exists():
         raise FileNotFoundError(f"Config file not found: {path}")
@@ -17,7 +16,6 @@ def load_config(config_path: str | Path) -> dict[str, Any]:
 
 
 def ensure_dir(path: str | Path) -> Path:
-    """Create a directory if it does not exist and return it as Path."""
     directory = Path(path)
     directory.mkdir(parents=True, exist_ok=True)
     return directory

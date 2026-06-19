@@ -1,4 +1,3 @@
-"""Add best/last weight variants."""
 
 from django.db import migrations, models
 

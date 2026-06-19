@@ -1,4 +1,3 @@
-"""Forms for authentication and detection submission."""
 
 from pathlib import Path
 
@@ -15,7 +14,6 @@ VIDEO_EXTENSIONS = {".mp4", ".avi", ".mov", ".mkv"}
 
 
 class EmailRegistrationForm(UserCreationForm):
-    """Register users with email as username."""
 
     email = forms.EmailField(label="Email")
 
@@ -39,13 +37,11 @@ class EmailRegistrationForm(UserCreationForm):
 
 
 class EmailAuthenticationForm(AuthenticationForm):
-    """Login form labelled for email."""
 
     username = forms.EmailField(label="Email")
 
 
 class DetectionRunForm(forms.ModelForm):
-    """Validate detection upload and options."""
 
     weight_variant = forms.ChoiceField(
         label="Вариант весов",
