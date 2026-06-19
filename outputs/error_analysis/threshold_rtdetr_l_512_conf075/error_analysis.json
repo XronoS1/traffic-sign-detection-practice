@@ -1,0 +1,83 @@
+{
+  "weights": "outputs\\runs\\rtdetr_l_512_30ep\\weights\\best.pt",
+  "conf": 0.75,
+  "iou": 0.5,
+  "processed_images": 300,
+  "true_positive_count": 457,
+  "false_positive_count": 47,
+  "false_negative_count": 32,
+  "successful_examples": [
+    {
+      "image": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_0_png.rf.3aa566303b61b1f71bb70abeb0561c65.jpg",
+      "visualization": "outputs\\error_analysis\\threshold_rtdetr_l_512_conf075\\visualizations\\AUTO_COLLECTED_PICTURE_0_png.rf.3aa566303b61b1f71bb70abeb0561c65.jpg",
+      "detected_objects": 1,
+      "average_confidence": 0.91,
+      "comment": "знак хорошо виден, объект крупный, фон не мешает"
+    },
+    {
+      "image": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_106_png.rf.3b96ef64a5d76fe20a53d2bbd000d91b.jpg",
+      "visualization": "outputs\\error_analysis\\threshold_rtdetr_l_512_conf075\\visualizations\\AUTO_COLLECTED_PICTURE_106_png.rf.3b96ef64a5d76fe20a53d2bbd000d91b.jpg",
+      "detected_objects": 2,
+      "average_confidence": 0.924,
+      "comment": "знак хорошо виден, объект крупный, фон не мешает"
+    },
+    {
+      "image": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_107_png.rf.803ceb32535d28d05a70cb13d29d4186.jpg",
+      "visualization": "outputs\\error_analysis\\threshold_rtdetr_l_512_conf075\\visualizations\\AUTO_COLLECTED_PICTURE_107_png.rf.803ceb32535d28d05a70cb13d29d4186.jpg",
+      "detected_objects": 1,
+      "average_confidence": 0.927,
+      "comment": "знак хорошо виден, объект крупный, фон не мешает"
+    },
+    {
+      "image": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_111_png.rf.07a0d2634e21d83867f63ac13bd2bf72.jpg",
+      "visualization": "outputs\\error_analysis\\threshold_rtdetr_l_512_conf075\\visualizations\\AUTO_COLLECTED_PICTURE_111_png.rf.07a0d2634e21d83867f63ac13bd2bf72.jpg",
+      "detected_objects": 1,
+      "average_confidence": 0.891,
+      "comment": "знак хорошо виден, объект крупный, фон не мешает"
+    },
+    {
+      "image": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_121_png.rf.2b2986b081d7593f620748f26f66b395.jpg",
+      "visualization": "outputs\\error_analysis\\threshold_rtdetr_l_512_conf075\\visualizations\\AUTO_COLLECTED_PICTURE_121_png.rf.2b2986b081d7593f620748f26f66b395.jpg",
+      "detected_objects": 1,
+      "average_confidence": 0.837,
+      "comment": "знак хорошо виден, объект крупный, фон не мешает"
+    }
+  ],
+  "error_examples": [
+    {
+      "image": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_104_png.rf.f1d63948496e43aa84b28972b5ed9765.jpg",
+      "visualization": "outputs\\error_analysis\\threshold_rtdetr_l_512_conf075\\visualizations\\AUTO_COLLECTED_PICTURE_104_png.rf.f1d63948496e43aa84b28972b5ed9765.jpg",
+      "error_type": "false_positive",
+      "reason": "сложный фон или похожий объект привел к ложному срабатыванию"
+    },
+    {
+      "image": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_109_png.rf.b48687af751e7d30b3aa82d8feb6df87.jpg",
+      "visualization": "outputs\\error_analysis\\threshold_rtdetr_l_512_conf075\\visualizations\\AUTO_COLLECTED_PICTURE_109_png.rf.b48687af751e7d30b3aa82d8feb6df87.jpg",
+      "error_type": "false_negative",
+      "reason": "маленький объект, перекрытие или низкая видимость могли привести к пропуску"
+    },
+    {
+      "image": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_113_png.rf.a3cb0e4e0656f2cd244283c9cb9d0846.jpg",
+      "visualization": "outputs\\error_analysis\\threshold_rtdetr_l_512_conf075\\visualizations\\AUTO_COLLECTED_PICTURE_113_png.rf.a3cb0e4e0656f2cd244283c9cb9d0846.jpg",
+      "error_type": "false_positive",
+      "reason": "сложный фон или похожий объект привел к ложному срабатыванию"
+    },
+    {
+      "image": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_119_png.rf.3e4e0210eb1910ba7b6597c5e0d95410.jpg",
+      "visualization": "outputs\\error_analysis\\threshold_rtdetr_l_512_conf075\\visualizations\\AUTO_COLLECTED_PICTURE_119_png.rf.3e4e0210eb1910ba7b6597c5e0d95410.jpg",
+      "error_type": "false_negative",
+      "reason": "маленький объект, перекрытие или низкая видимость могли привести к пропуску"
+    },
+    {
+      "image": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_121_png.rf.2b2986b081d7593f620748f26f66b395.jpg",
+      "visualization": "outputs\\error_analysis\\threshold_rtdetr_l_512_conf075\\visualizations\\AUTO_COLLECTED_PICTURE_121_png.rf.2b2986b081d7593f620748f26f66b395.jpg",
+      "error_type": "class_confusion",
+      "reason": "объект похож на другой класс дорожного знака"
+    }
+  ],
+  "common_error_reasons": {
+    "false_positive": 34,
+    "false_negative": 28,
+    "class_confusion": 8
+  }
+}

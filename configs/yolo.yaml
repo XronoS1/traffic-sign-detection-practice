@@ -1,0 +1,18 @@
+project:
+  name: road-sign-detection
+  output_dir: outputs/yolo
+
+data:
+  yaml_path: data/data.yaml
+
+training:
+  model: yolov8n
+  epochs: 100
+  image_size: 640
+  batch_size: 16
+  device: 0
+
+models:
+  yolov8n: yolov8n.pt
+  yolov8s: yolov8s.pt
+  yolo11n: yolo11n.pt

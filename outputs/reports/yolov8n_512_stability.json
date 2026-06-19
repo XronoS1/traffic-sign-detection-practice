@@ -1,0 +1,12 @@
+{
+  "source_benchmark_json": "outputs\\reports\\yolov8n_512_benchmark.json",
+  "bootstrap_iters": 1000,
+  "latency_mean_ms": 6.804,
+  "latency_std_ms": 0.989,
+  "latency_ci95_low_ms": 6.673,
+  "latency_ci95_high_ms": 6.947,
+  "fps_mean": 149.455,
+  "fps_std": 17.577,
+  "fps_ci95_low": 147.079,
+  "fps_ci95_high": 151.785
+}

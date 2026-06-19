@@ -1,0 +1,15 @@
+data:
+  source: data/images/test
+
+benchmark:
+  model_paths:
+    - models/yolov8n.pt
+    - models/yolov8s.pt
+    - models/yolov11n.pt
+    - models/rtdetr.pt
+    - models/fasterrcnn.pt
+  image_size: 640
+  warmup_runs: 5
+  runs: 50
+  device: cuda
+  output_dir: outputs/benchmark

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Главная{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-card">
+    <h1>Детекция дорожных знаков на изображениях и видео</h1>
+    <p>Сервис позволяет запускать обученные модели нейронных сетей, обрабатывать изображения и видео, сохранять результаты и анализировать историю запусков.</p>
+    <div class="hero-actions">
+      {% if user.is_authenticated %}
+        <a class="button" href="{% url 'detect' %}">Запустить распознавание</a>
+      {% else %}
+        <a class="button" href="{% url 'detect' %}">Запустить распознавание</a>
+        <a class="button secondary" href="{% url 'login' %}">Войти</a>
+        <a class="button secondary" href="{% url 'register' %}">Зарегистрироваться</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+<section class="feature-grid">
+  <article class="feature-card">
+    <strong>5 обученных моделей</strong>
+    <p>YOLO, RT-DETR и Faster R-CNN доступны из одного интерфейса.</p>
+  </article>
+  <article class="feature-card">
+    <strong>Обработка фото и видео</strong>
+    <p>Загружайте изображения или короткие видеоролики для распознавания.</p>
+  </article>
+  <article class="feature-card">
+    <strong>История и статистика запусков</strong>
+    <p>Результаты сохраняются в личном кабинете пользователя.</p>
+  </article>
+</section>
+{% endblock %}

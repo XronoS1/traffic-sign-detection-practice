@@ -1,0 +1,12 @@
+{
+  "source_benchmark_json": "outputs\\reports\\rtdetr_l_512_30ep_benchmark.json",
+  "bootstrap_iters": 1000,
+  "latency_mean_ms": 16.033,
+  "latency_std_ms": 2.123,
+  "latency_ci95_low_ms": 15.755,
+  "latency_ci95_high_ms": 16.327,
+  "fps_mean": 63.312,
+  "fps_std": 7.256,
+  "fps_ci95_low": 62.355,
+  "fps_ci95_high": 64.367
+}

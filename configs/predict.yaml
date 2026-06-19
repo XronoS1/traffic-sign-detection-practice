@@ -1,0 +1,7 @@
+prediction:
+  model_path: models/best.pt
+  source: data/images/test
+  image_size: 640
+  confidence: 0.25
+  device: 0
+  output_dir: outputs/predictions

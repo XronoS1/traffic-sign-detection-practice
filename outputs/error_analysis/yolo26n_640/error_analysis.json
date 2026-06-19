@@ -1,0 +1,84 @@
+{
+  "weights": "outputs\\runs\\yolo26n_640\\weights\\best.pt",
+  "conf": 0.25,
+  "iou": 0.5,
+  "processed_images": 300,
+  "true_positive_count": 380,
+  "false_positive_count": 210,
+  "false_negative_count": 86,
+  "successful_examples": [
+    {
+      "image": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_107_png.rf.803ceb32535d28d05a70cb13d29d4186.jpg",
+      "visualization": "outputs\\error_analysis\\yolo26n_640\\visualizations\\AUTO_COLLECTED_PICTURE_107_png.rf.803ceb32535d28d05a70cb13d29d4186.jpg",
+      "detected_objects": 1,
+      "average_confidence": 0.325,
+      "comment": "знак хорошо виден, объект крупный, фон не мешает"
+    },
+    {
+      "image": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_133_png.rf.293e84cf9acacb45aee1c77563d403ea.jpg",
+      "visualization": "outputs\\error_analysis\\yolo26n_640\\visualizations\\AUTO_COLLECTED_PICTURE_133_png.rf.293e84cf9acacb45aee1c77563d403ea.jpg",
+      "detected_objects": 1,
+      "average_confidence": 0.553,
+      "comment": "знак хорошо виден, объект крупный, фон не мешает"
+    },
+    {
+      "image": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_138_png.rf.867708c68ba891033bc3bb034c8b0168.jpg",
+      "visualization": "outputs\\error_analysis\\yolo26n_640\\visualizations\\AUTO_COLLECTED_PICTURE_138_png.rf.867708c68ba891033bc3bb034c8b0168.jpg",
+      "detected_objects": 2,
+      "average_confidence": 0.845,
+      "comment": "знак хорошо виден, объект крупный, фон не мешает"
+    },
+    {
+      "image": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_155_png.rf.dc515b1087e3aec619f1ce96db9005a3.jpg",
+      "visualization": "outputs\\error_analysis\\yolo26n_640\\visualizations\\AUTO_COLLECTED_PICTURE_155_png.rf.dc515b1087e3aec619f1ce96db9005a3.jpg",
+      "detected_objects": 1,
+      "average_confidence": 0.563,
+      "comment": "знак хорошо виден, объект крупный, фон не мешает"
+    },
+    {
+      "image": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_176_png.rf.fbce1a412eeb10d6ef18f2c9e596d547.jpg",
+      "visualization": "outputs\\error_analysis\\yolo26n_640\\visualizations\\AUTO_COLLECTED_PICTURE_176_png.rf.fbce1a412eeb10d6ef18f2c9e596d547.jpg",
+      "detected_objects": 1,
+      "average_confidence": 0.369,
+      "comment": "знак хорошо виден, объект крупный, фон не мешает"
+    }
+  ],
+  "error_examples": [
+    {
+      "image": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_0_png.rf.3aa566303b61b1f71bb70abeb0561c65.jpg",
+      "visualization": "outputs\\error_analysis\\yolo26n_640\\visualizations\\AUTO_COLLECTED_PICTURE_0_png.rf.3aa566303b61b1f71bb70abeb0561c65.jpg",
+      "error_type": "false_positive",
+      "reason": "сложный фон или похожий объект привел к ложному срабатыванию"
+    },
+    {
+      "image": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_0_png.rf.3aa566303b61b1f71bb70abeb0561c65.jpg",
+      "visualization": "outputs\\error_analysis\\yolo26n_640\\visualizations\\AUTO_COLLECTED_PICTURE_0_png.rf.3aa566303b61b1f71bb70abeb0561c65.jpg",
+      "error_type": "class_confusion",
+      "reason": "объект похож на другой класс дорожного знака"
+    },
+    {
+      "image": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_104_png.rf.f1d63948496e43aa84b28972b5ed9765.jpg",
+      "visualization": "outputs\\error_analysis\\yolo26n_640\\visualizations\\AUTO_COLLECTED_PICTURE_104_png.rf.f1d63948496e43aa84b28972b5ed9765.jpg",
+      "error_type": "false_positive",
+      "reason": "сложный фон или похожий объект привел к ложному срабатыванию"
+    },
+    {
+      "image": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_106_png.rf.3b96ef64a5d76fe20a53d2bbd000d91b.jpg",
+      "visualization": "outputs\\error_analysis\\yolo26n_640\\visualizations\\AUTO_COLLECTED_PICTURE_106_png.rf.3b96ef64a5d76fe20a53d2bbd000d91b.jpg",
+      "error_type": "false_negative",
+      "reason": "маленький объект, перекрытие или низкая видимость могли привести к пропуску"
+    },
+    {
+      "image": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_109_png.rf.b48687af751e7d30b3aa82d8feb6df87.jpg",
+      "visualization": "outputs\\error_analysis\\yolo26n_640\\visualizations\\AUTO_COLLECTED_PICTURE_109_png.rf.b48687af751e7d30b3aa82d8feb6df87.jpg",
+      "error_type": "false_positive",
+      "reason": "сложный фон или похожий объект привел к ложному срабатыванию"
+    }
+  ],
+  "common_error_reasons": {
+    "false_positive": 129,
+    "class_confusion": 29,
+    "false_negative": 67,
+    "localization_error": 1
+  }
+}

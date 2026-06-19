@@ -1,0 +1,660 @@
+{
+  "errors": [
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_104_png.rf.f1d63948496e43aa84b28972b5ed9765.jpg",
+      "error_type": "false_positive",
+      "class_id": 22,
+      "class_name": "info_crosswalk",
+      "score": 0.943556,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_109_png.rf.b48687af751e7d30b3aa82d8feb6df87.jpg",
+      "error_type": "false_positive",
+      "class_id": 24,
+      "class_name": "info_one_way_traffic",
+      "score": 0.961094,
+      "iou": 0.435666
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_109_png.rf.b48687af751e7d30b3aa82d8feb6df87.jpg",
+      "error_type": "false_positive",
+      "class_id": 22,
+      "class_name": "info_crosswalk",
+      "score": 0.800479,
+      "iou": 0.463848
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_109_png.rf.b48687af751e7d30b3aa82d8feb6df87.jpg",
+      "error_type": "false_positive",
+      "class_id": 21,
+      "class_name": "info_bus_station",
+      "score": 0.733511,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_109_png.rf.b48687af751e7d30b3aa82d8feb6df87.jpg",
+      "error_type": "false_negative",
+      "class_id": 22,
+      "class_name": "info_crosswalk",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_109_png.rf.b48687af751e7d30b3aa82d8feb6df87.jpg",
+      "error_type": "false_negative",
+      "class_id": 24,
+      "class_name": "info_one_way_traffic",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_109_png.rf.b48687af751e7d30b3aa82d8feb6df87.jpg",
+      "error_type": "false_negative",
+      "class_id": 24,
+      "class_name": "info_one_way_traffic",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_109_png.rf.b48687af751e7d30b3aa82d8feb6df87.jpg",
+      "error_type": "false_negative",
+      "class_id": 44,
+      "class_name": "warn_cyclists",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_208_png.rf.ceb34de645c4357e66fefc3c7992338e.jpg",
+      "error_type": "false_positive",
+      "class_id": 8,
+      "class_name": "forb_speed_over_30",
+      "score": 0.612626,
+      "iou": 0.855066
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_216_png.rf.ab8e031d13861da7056ef106ebfcf9b9.jpg",
+      "error_type": "false_negative",
+      "class_id": 16,
+      "class_name": "forb_stopping",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_216_png.rf.ab8e031d13861da7056ef106ebfcf9b9.jpg",
+      "error_type": "false_negative",
+      "class_id": 22,
+      "class_name": "info_crosswalk",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_216_png.rf.ab8e031d13861da7056ef106ebfcf9b9.jpg",
+      "error_type": "false_negative",
+      "class_id": 24,
+      "class_name": "info_one_way_traffic",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_227_png.rf.e3b58baf770b6433be58c884653d52ef.jpg",
+      "error_type": "false_negative",
+      "class_id": 25,
+      "class_name": "info_parking",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_27_png.rf.67531d8f3f1abb8e2ed4a5e637b1c3ad.jpg",
+      "error_type": "false_positive",
+      "class_id": 35,
+      "class_name": "mand_straigh_left",
+      "score": 0.509588,
+      "iou": 0.836811
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_36_png.rf.9237114eef890efd8efe06434bac99eb.jpg",
+      "error_type": "false_positive",
+      "class_id": 50,
+      "class_name": "warn_speed_bumper",
+      "score": 0.986814,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_38_png.rf.61438c17bbb24b828081b12e2f97f5be.jpg",
+      "error_type": "false_positive",
+      "class_id": 24,
+      "class_name": "info_one_way_traffic",
+      "score": 0.99491,
+      "iou": 0.021941
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_38_png.rf.61438c17bbb24b828081b12e2f97f5be.jpg",
+      "error_type": "false_positive",
+      "class_id": 22,
+      "class_name": "info_crosswalk",
+      "score": 0.994131,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_40_png.rf.4d41c777c3da41ab953178d80eac3471.jpg",
+      "error_type": "false_negative",
+      "class_id": 16,
+      "class_name": "forb_stopping",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_53_png.rf.9344e10c37608f3c5d3fd377cf0c01cf.jpg",
+      "error_type": "false_positive",
+      "class_id": 46,
+      "class_name": "warn_other_dangers",
+      "score": 0.782051,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_66_png.rf.20792a03a22b3cb48ff426cd19bca4c6.jpg",
+      "error_type": "false_negative",
+      "class_id": 42,
+      "class_name": "warn_construction",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_85_png.rf.9371597a191428b3f590ac8e405ea7b6.jpg",
+      "error_type": "false_positive",
+      "class_id": 22,
+      "class_name": "info_crosswalk",
+      "score": 0.952563,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_85_png.rf.9371597a191428b3f590ac8e405ea7b6.jpg",
+      "error_type": "false_positive",
+      "class_id": 41,
+      "class_name": "warn_children",
+      "score": 0.528267,
+      "iou": 0.788399
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_85_png.rf.9371597a191428b3f590ac8e405ea7b6.jpg",
+      "error_type": "false_negative",
+      "class_id": 43,
+      "class_name": "warn_crosswalk",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_97_png.rf.71c9530f859d0f7846c5aee78eba28a0.jpg",
+      "error_type": "false_negative",
+      "class_id": 0,
+      "class_name": "forb_ahead",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_9_png.rf.8a70e287b30237692f24518fce667975.jpg",
+      "error_type": "false_positive",
+      "class_id": 41,
+      "class_name": "warn_children",
+      "score": 0.898149,
+      "iou": 0.92249
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\AUTO_COLLECTED_PICTURE_9_png.rf.8a70e287b30237692f24518fce667975.jpg",
+      "error_type": "false_negative",
+      "class_id": 49,
+      "class_name": "warn_slippery_road",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\PIC-00330-_png_jpg.rf.dd15a27fa7bf0efec7ab2732c9a260af.jpg",
+      "error_type": "false_positive",
+      "class_id": 41,
+      "class_name": "warn_children",
+      "score": 0.80651,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\PIC-00368-_png_jpg.rf.a8baec181d4242a1ff642401c125da7c.jpg",
+      "error_type": "false_positive",
+      "class_id": 44,
+      "class_name": "warn_cyclists",
+      "score": 0.7281,
+      "iou": 0.005316
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\PIC-00369-_png_jpg.rf.b93e305924aa107b0183a0e6f6eca44c.jpg",
+      "error_type": "false_positive",
+      "class_id": 22,
+      "class_name": "info_crosswalk",
+      "score": 0.994646,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\PIC-00369-_png_jpg.rf.b93e305924aa107b0183a0e6f6eca44c.jpg",
+      "error_type": "false_positive",
+      "class_id": 51,
+      "class_name": "warn_traffic_light",
+      "score": 0.533686,
+      "iou": 0.944728
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\PIC-00369-_png_jpg.rf.b93e305924aa107b0183a0e6f6eca44c.jpg",
+      "error_type": "false_negative",
+      "class_id": 16,
+      "class_name": "forb_stopping",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\PIC-00369-_png_jpg.rf.b93e305924aa107b0183a0e6f6eca44c.jpg",
+      "error_type": "false_negative",
+      "class_id": 44,
+      "class_name": "warn_cyclists",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\PIC-00369-_png_jpg.rf.b93e305924aa107b0183a0e6f6eca44c.jpg",
+      "error_type": "false_negative",
+      "class_id": 43,
+      "class_name": "warn_crosswalk",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\PIC-00370-_png_jpg.rf.570ec55bfa8bba1595ea464815624cf8.jpg",
+      "error_type": "false_positive",
+      "class_id": 22,
+      "class_name": "info_crosswalk",
+      "score": 0.987614,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\PIC-00385-_png_jpg.rf.13fa9009f462f1855bd0a9762210ffdc.jpg",
+      "error_type": "false_positive",
+      "class_id": 20,
+      "class_name": "forb_weight_over_7.5t",
+      "score": 0.844901,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\PIC-00387-_png_jpg.rf.7f410093aa18b4cf2cfe9ad68435b87b.jpg",
+      "error_type": "false_positive",
+      "class_id": 22,
+      "class_name": "info_crosswalk",
+      "score": 0.900552,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\PIC-00400-_png_jpg.rf.ba730d5bd07e309ec10b528dd5af3ef4.jpg",
+      "error_type": "false_positive",
+      "class_id": 22,
+      "class_name": "info_crosswalk",
+      "score": 0.982114,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\PIC-00400-_png_jpg.rf.ba730d5bd07e309ec10b528dd5af3ef4.jpg",
+      "error_type": "false_positive",
+      "class_id": 38,
+      "class_name": "prio_give_way",
+      "score": 0.930558,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00004_png_jpg.rf.5c8a690fd10da10156bea3ecae08dc62.jpg",
+      "error_type": "false_positive",
+      "class_id": 2,
+      "class_name": "forb_overtake",
+      "score": 0.95337,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00006_png_jpg.rf.5a41e6de0a369ce23ea694e301e30984.jpg",
+      "error_type": "false_positive",
+      "class_id": 40,
+      "class_name": "prio_stop",
+      "score": 0.91833,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00023_png_jpg.rf.c6083c92ec4e12b15c0c2005c32cdf32.jpg",
+      "error_type": "false_positive",
+      "class_id": 16,
+      "class_name": "forb_stopping",
+      "score": 0.857482,
+      "iou": 0.045615
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00023_png_jpg.rf.c6083c92ec4e12b15c0c2005c32cdf32.jpg",
+      "error_type": "false_positive",
+      "class_id": 16,
+      "class_name": "forb_stopping",
+      "score": 0.754754,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00026_png_jpg.rf.2fefadf5d73d03635b1588798b6f0b11.jpg",
+      "error_type": "false_positive",
+      "class_id": 33,
+      "class_name": "mand_right",
+      "score": 0.603406,
+      "iou": 0.904033
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00027_png_jpg.rf.f3e99d49df2c2c21b2dca8c6b091a3bc.jpg",
+      "error_type": "false_positive",
+      "class_id": 33,
+      "class_name": "mand_right",
+      "score": 0.627651,
+      "iou": 0.878853
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00036_png_jpg.rf.dd06913abd1a00306be65232e4fc27d6.jpg",
+      "error_type": "false_negative",
+      "class_id": 25,
+      "class_name": "info_parking",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00041_png_jpg.rf.fe4c0e17dd43d874a04d0b90d08aa058.jpg",
+      "error_type": "false_positive",
+      "class_id": 0,
+      "class_name": "forb_ahead",
+      "score": 0.661974,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00043_png_jpg.rf.c7cab205f3bb530d3393f5efc64edc37.jpg",
+      "error_type": "false_positive",
+      "class_id": 1,
+      "class_name": "forb_left",
+      "score": 0.561633,
+      "iou": 0.934598
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00045_png_jpg.rf.b6ff9b7ef6b0b30f31bd88859752ac91.jpg",
+      "error_type": "false_positive",
+      "class_id": 1,
+      "class_name": "forb_left",
+      "score": 0.951928,
+      "iou": 0.944971
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00045_png_jpg.rf.b6ff9b7ef6b0b30f31bd88859752ac91.jpg",
+      "error_type": "false_negative",
+      "class_id": 18,
+      "class_name": "forb_u_turn",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00065_png_jpg.rf.8c2449b4fa77c0113ee793aa5f3eb1f7.jpg",
+      "error_type": "false_positive",
+      "class_id": 38,
+      "class_name": "prio_give_way",
+      "score": 0.869442,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00065_png_jpg.rf.8c2449b4fa77c0113ee793aa5f3eb1f7.jpg",
+      "error_type": "false_positive",
+      "class_id": 41,
+      "class_name": "warn_children",
+      "score": 0.554713,
+      "iou": 0.010393
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00065_png_jpg.rf.8c2449b4fa77c0113ee793aa5f3eb1f7.jpg",
+      "error_type": "false_positive",
+      "class_id": 48,
+      "class_name": "warn_roundabout",
+      "score": 0.510559,
+      "iou": 0.013441
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00071_png_jpg.rf.fd59bb5342fc68536e56cb075b71ce3a.jpg",
+      "error_type": "false_positive",
+      "class_id": 8,
+      "class_name": "forb_speed_over_30",
+      "score": 0.925851,
+      "iou": 0.950809
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00083_png_jpg.rf.40a56b1c8f5231c61e43841ffbeb7d9e.jpg",
+      "error_type": "false_positive",
+      "class_id": 31,
+      "class_name": "mand_pass_left_right",
+      "score": 0.945194,
+      "iou": 0.009715
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00084_png_jpg.rf.198c76481f4047fbe07838dbc9265a87.jpg",
+      "error_type": "false_positive",
+      "class_id": 6,
+      "class_name": "forb_speed_over_130",
+      "score": 0.671989,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00085_png_jpg.rf.b6e76513abe632d3fc9217334e7c2438.jpg",
+      "error_type": "false_positive",
+      "class_id": 6,
+      "class_name": "forb_speed_over_130",
+      "score": 0.588826,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00087_png_jpg.rf.00c4cd0a30bdf51ecf69147bddf2d423.jpg",
+      "error_type": "false_positive",
+      "class_id": 6,
+      "class_name": "forb_speed_over_130",
+      "score": 0.717822,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00095_png_jpg.rf.df4b6baaf62ca639a699cfdc3982f603.jpg",
+      "error_type": "false_positive",
+      "class_id": 46,
+      "class_name": "warn_other_dangers",
+      "score": 0.642384,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00101_png_jpg.rf.66de779690229aa64ad5562fa34e7594.jpg",
+      "error_type": "false_negative",
+      "class_id": 31,
+      "class_name": "mand_pass_left_right",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00116_png_jpg.rf.510df6e6d26c7ad990cfed947392d107.jpg",
+      "error_type": "false_positive",
+      "class_id": 40,
+      "class_name": "prio_stop",
+      "score": 0.887557,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00134_png_jpg.rf.54b15a168e9e116e722504cb6ad921a7.jpg",
+      "error_type": "false_negative",
+      "class_id": 32,
+      "class_name": "mand_pass_right",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00135_png_jpg.rf.a58de3810bdd0f6e9cc1262741117e3a.jpg",
+      "error_type": "false_positive",
+      "class_id": 24,
+      "class_name": "info_one_way_traffic",
+      "score": 0.540224,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG-00135_png_jpg.rf.a58de3810bdd0f6e9cc1262741117e3a.jpg",
+      "error_type": "false_negative",
+      "class_id": 32,
+      "class_name": "mand_pass_right",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG12-RADU_719_png.rf.9ecc11172eb9ed43e54b8d467c1930e4.jpg",
+      "error_type": "false_positive",
+      "class_id": 0,
+      "class_name": "forb_ahead",
+      "score": 0.988022,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG12-RADU_719_png.rf.9ecc11172eb9ed43e54b8d467c1930e4.jpg",
+      "error_type": "false_positive",
+      "class_id": 21,
+      "class_name": "info_bus_station",
+      "score": 0.502306,
+      "iou": 0.921731
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG12-RADU_726_png.rf.a4337ef814389de203750301a2a31084.jpg",
+      "error_type": "false_positive",
+      "class_id": 50,
+      "class_name": "warn_speed_bumper",
+      "score": 0.617322,
+      "iou": 0.867838
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG12-RADU_731_png.rf.da94c7dc04847d6e74584a3ff19108bb.jpg",
+      "error_type": "false_positive",
+      "class_id": 17,
+      "class_name": "forb_trucks",
+      "score": 0.533684,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG12-RADU_732_png.rf.eef29a594a4c7b62fb0aa8523935a371.jpg",
+      "error_type": "false_positive",
+      "class_id": 42,
+      "class_name": "warn_construction",
+      "score": 0.894306,
+      "iou": 0.093883
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG12-RADU_732_png.rf.eef29a594a4c7b62fb0aa8523935a371.jpg",
+      "error_type": "false_positive",
+      "class_id": 49,
+      "class_name": "warn_slippery_road",
+      "score": 0.544409,
+      "iou": 0.926495
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG12-RADU_732_png.rf.eef29a594a4c7b62fb0aa8523935a371.jpg",
+      "error_type": "false_negative",
+      "class_id": 48,
+      "class_name": "warn_roundabout",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG12-RADU_736_png.rf.9769cdff80d30c6afaebad10da164b5a.jpg",
+      "error_type": "false_positive",
+      "class_id": 31,
+      "class_name": "mand_pass_left_right",
+      "score": 0.912642,
+      "iou": 0.869199
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG12-RADU_736_png.rf.9769cdff80d30c6afaebad10da164b5a.jpg",
+      "error_type": "false_positive",
+      "class_id": 30,
+      "class_name": "mand_pass_left",
+      "score": 0.818485,
+      "iou": 0.933676
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG12-RADU_736_png.rf.9769cdff80d30c6afaebad10da164b5a.jpg",
+      "error_type": "false_negative",
+      "class_id": 32,
+      "class_name": "mand_pass_right",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG12-RADU_736_png.rf.9769cdff80d30c6afaebad10da164b5a.jpg",
+      "error_type": "false_negative",
+      "class_id": 3,
+      "class_name": "forb_right",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG12-RADU_738_png.rf.1f555a6c3b1bdcde12c2780dd740ebae.jpg",
+      "error_type": "false_negative",
+      "class_id": 8,
+      "class_name": "forb_speed_over_30",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG12-RADU_743_png.rf.b2a73fc92111e705bfa773da4aba2d3e.jpg",
+      "error_type": "false_positive",
+      "class_id": 12,
+      "class_name": "forb_speed_over_60",
+      "score": 0.657257,
+      "iou": 0.928219
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG12-RADU_745_png.rf.f5e2b22e95c3f4d93dda7ffc83855146.jpg",
+      "error_type": "false_positive",
+      "class_id": 21,
+      "class_name": "info_bus_station",
+      "score": 0.998314,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG12-RADU_746_png.rf.e287c0c36b55377bfe63ab88244ea393.jpg",
+      "error_type": "false_positive",
+      "class_id": 21,
+      "class_name": "info_bus_station",
+      "score": 0.999048,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG12-RADU_752_png.rf.ff93a4910429fe15ec6db4a502276441.jpg",
+      "error_type": "false_negative",
+      "class_id": 52,
+      "class_name": "warn_tram",
+      "score": null,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG12-RADU_753_png.rf.e09a2d387191b2665c8798ee6234a900.jpg",
+      "error_type": "false_positive",
+      "class_id": 50,
+      "class_name": "warn_speed_bumper",
+      "score": 0.943646,
+      "iou": 0.895788
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG12-RADU_753_png.rf.e09a2d387191b2665c8798ee6234a900.jpg",
+      "error_type": "false_positive",
+      "class_id": 31,
+      "class_name": "mand_pass_left_right",
+      "score": 0.929282,
+      "iou": 0.0
+    },
+    {
+      "image_path": "data\\traffic-signs\\valid\\images\\SNAG12-RADU_753_png.rf.e09a2d387191b2665c8798ee6234a900.jpg",
+      "error_type": "false_negative",
+      "class_id": 52,
+      "class_name": "warn_tram",
+      "score": null,
+      "iou": 0.0
+    }
+  ]
+}

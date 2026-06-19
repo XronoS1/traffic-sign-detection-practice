@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}История{% endblock %}
+{% block content %}
+<h1>История запусков</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Дата</th>
+      <th>Тип</th>
+      <th>Модель</th>
+      <th>Качество</th>
+      <th>Веса</th>
+      <th>Найдено объектов</th>
+      <th>Время обработки</th>
+      <th>Статус</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for run in runs %}
+      <tr>
+        <td>{{ run.created_at }}</td>
+        <td>{{ run.get_file_type_display }}</td>
+        <td>{{ run.model_weight.title }}</td>
+        <td><span class="quality-badge quality-{{ run.model_weight.quality_label }}">{{ run.model_weight.get_quality_label_display }}</span></td>
+        <td>{{ run.get_weight_variant_display }}</td>
+        <td>{{ run.detections_count }}</td>
+        <td>{{ run.latency_ms|default:"-" }}</td>
+        <td>{{ run.get_status_display }}</td>
+        <td><a href="{% url 'run_detail' run.id %}">Открыть</a></td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="9">Запусков пока нет.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

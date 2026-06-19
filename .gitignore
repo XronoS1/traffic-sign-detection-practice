@@ -1,0 +1,71 @@
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local agent and editor files
+.agent/
+.agents/
+.codex/
+.idea/
+.vscode/
+
+# Python cache and test artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
+~$*
+
+# Local run artifacts outside the project outputs directory
+runs/
+
+# Archives and large packaged files
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# Service runtime uploads
+service/media/uploads/
+service/media/processed/
+
+# Local environment files
+.env
+.env.*
+
+# Keep tracked experiment reports, final artifacts, and model weights in outputs
+!outputs/reports/
+!outputs/final_artifacts/
+!outputs/runs/
+
+# Local pretrained checkpoints downloaded by training scripts
+yolov8n.pt
+yolo11n.pt
+yolo26n.pt
+rtdetr-l.pt
+
+# Temporary/test experiment runs
+outputs/runs/fasterrcnn_resnet50_fpn_640_test/
+
+# Local agent/editor folders
+.agents/
+.vscode/
+

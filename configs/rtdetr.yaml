@@ -1,0 +1,13 @@
+project:
+  name: road-sign-detection
+  output_dir: outputs/rtdetr
+
+data:
+  yaml_path: data/data.yaml
+
+training:
+  model: rtdetr-l.pt
+  epochs: 100
+  image_size: 640
+  batch_size: 8
+  device: 0

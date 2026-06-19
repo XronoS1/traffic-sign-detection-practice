@@ -1,0 +1,9 @@
+data:
+  yaml_path: data/data.yaml
+
+evaluation:
+  model_path: models/best.pt
+  split: test
+  image_size: 640
+  device: 0
+  output_dir: outputs/evaluation

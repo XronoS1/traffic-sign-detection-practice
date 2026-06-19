@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Статистика{% endblock %}
+{% block content %}
+<h1>Статистика</h1>
+<div class="stats-grid">
+  <div class="panel"><strong>Всего запусков</strong><span>{{ total_runs }}</span></div>
+  <div class="panel"><strong>Обработано изображений</strong><span>{{ image_runs }}</span></div>
+  <div class="panel"><strong>Обработано видео</strong><span>{{ video_runs }}</span></div>
+  <div class="panel"><strong>Среднее время обработки</strong><span>{{ average_latency|floatformat:2|default:"-" }} ms</span></div>
+  <div class="panel"><strong>Самая используемая модель</strong><span>{{ most_used_model.model_weight__title|default:"-" }}</span></div>
+</div>
+<h2>Распределение по моделям</h2>
+<ul>
+  {% for item in model_distribution %}
+    <li>{{ item.model_weight__title }}: {{ item.total }}</li>
+  {% empty %}
+    <li>Данных пока нет.</li>
+  {% endfor %}
+</ul>
+<h2>Распределение по варианту весов</h2>
+<ul>
+  {% for item in weight_distribution %}
+    <li>{{ item.label }}: {{ item.total }}</li>
+  {% empty %}
+    <li>Данных пока нет.</li>
+  {% endfor %}
+</ul>
+<h2>Топ найденных классов</h2>
+<ul>
+  {% for class_name, count in top_classes %}
+    <li>{{ class_name }}: {{ count }}</li>
+  {% empty %}
+    <li>Данных пока нет.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

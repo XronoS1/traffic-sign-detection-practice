@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Результат{% endblock %}
+{% block content %}
+<h1>Результат запуска #{{ run.id }}</h1>
+<div class="panel">
+  <p><strong>Статус:</strong> {{ run.get_status_display }}</p>
+  {% if run.error_message %}<p class="error">{{ run.error_message }}</p>{% endif %}
+  <p><strong>Модель:</strong> {{ run.model_weight.title }}</p>
+  <p><strong>Вариант весов:</strong> {{ run.get_weight_variant_display }}</p>
+  <p><strong>Время обработки:</strong> {{ run.latency_ms|default:"-" }} ms</p>
+  <p><strong>Количество найденных объектов:</strong> {{ run.detections_count }}</p>
+  <p><strong>Дата:</strong> {{ run.created_at }}</p>
+</div>
+{% if run.status == "done" and run.detections_count == 0 %}
+  <div class="notice">
+    <strong>Объекты не обнаружены.</strong>
+    <p>Попробуйте другое изображение или другую модель.</p>
+  </div>
+{% endif %}
+<section class="panel">
+  <h2>Найденные объекты</h2>
+  {% if detected_classes_display %}
+    <ul class="class-list">
+      {% for class_name, count in detected_classes_display %}
+        <li><span>{{ class_name }}</span><strong class="count-badge">{{ count }}</strong></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="muted">Объекты не обнаружены.</p>
+  {% endif %}
+</section>
+<div class="media-grid">
+  <section>
+    <h2>Исходный файл</h2>
+    {% if run.file_type == "image" %}
+      <img src="{{ run.input_file.url }}" alt="Исходное изображение">
+    {% else %}
+      <video controls preload="metadata">
+        <source src="{{ run.input_file.url }}" type="video/mp4">
+        Ваш браузер не поддерживает воспроизведение видео.
+      </video>
+    {% endif %}
+  </section>
+  {% if run.output_file %}
+    <section>
+      <h2>Результат</h2>
+      {% if run.file_type == "image" %}
+        <img src="{{ run.output_file.url }}" alt="Результат распознавания">
+      {% else %}
+        <video controls preload="metadata">
+          <source src="{{ run.output_file.url }}" type="video/mp4">
+          Ваш браузер не поддерживает воспроизведение видео.
+        </video>
+      {% endif %}
+    </section>
+  {% elif run.file_type == "video" and run.status == "failed" %}
+    <section>
+      <h2>Результат</h2>
+      <p class="error">Не удалось создать обработанное видео. Попробуйте другой файл или другую модель.</p>
+    </section>
+  {% endif %}
+</div>
+<div class="action-row">
+  <a class="button" href="{% url 'detect' %}">Запустить ещё раз</a>
+  <a class="button secondary" href="{% url 'history' %}">История запусков</a>
+  <a class="button secondary" href="{% url 'home' %}">На главную</a>
+</div>
+{% endblock %}

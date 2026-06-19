@@ -1,0 +1,17 @@
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./outputs:/app/outputs
+      - ./service/media:/app/service/media
+      - ./service/db.sqlite3:/app/service/db.sqlite3
+      - ./smoke_tests:/app/smoke_tests
+      - ./data:/app/data:ro
+    environment:
+      DJANGO_DEBUG: "1"
+      DJANGO_ALLOWED_HOSTS: "localhost,127.0.0.1,0.0.0.0"
+      FFMPEG_BINARY: "ffmpeg"
+    command: ["sh", "/app/docker-entrypoint.sh"]

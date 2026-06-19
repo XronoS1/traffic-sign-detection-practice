@@ -1,0 +1,15 @@
+project:
+  name: road-sign-detection
+  output_dir: outputs/fasterrcnn
+
+data:
+  root_dir: data
+  yaml_path: data/data.yaml
+
+training:
+  backbone: resnet50_fpn
+  epochs: 50
+  image_size: 640
+  batch_size: 4
+  learning_rate: 0.005
+  device: cuda

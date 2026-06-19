@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Профиль{% endblock %}
+{% block content %}
+<h1>Личный кабинет</h1>
+<div class="panel">
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>Всего запусков:</strong> {{ runs_count }}</p>
+  <a class="button" href="{% url 'detect' %}">Новое распознавание</a>
+</div>
+{% endblock %}

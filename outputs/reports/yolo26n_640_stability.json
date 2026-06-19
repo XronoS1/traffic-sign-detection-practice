@@ -1,0 +1,12 @@
+{
+  "source_benchmark_json": "outputs\\reports\\yolo26n_640_benchmark.json",
+  "bootstrap_iters": 1000,
+  "latency_mean_ms": 8.675,
+  "latency_std_ms": 1.985,
+  "latency_ci95_low_ms": 8.406,
+  "latency_ci95_high_ms": 8.964,
+  "fps_mean": 120.229,
+  "fps_std": 22.027,
+  "fps_ci95_low": 117.08,
+  "fps_ci95_high": 123.516
+}
