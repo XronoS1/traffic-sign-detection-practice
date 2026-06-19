@@ -51,12 +51,7 @@ service/media/processed/
 .env
 .env.*
 
-# Keep tracked experiment reports, final artifacts, and model weights in outputs
-!outputs/reports/
-!outputs/final_artifacts/
-!outputs/runs/
-
-# Local pretrained checkpoints downloaded by training scripts
+# Pretrained checkpoints downloaded before fine-tuning
 yolov8n.pt
 yolo11n.pt
 yolo26n.pt
@@ -65,7 +60,10 @@ rtdetr-l.pt
 # Temporary/test experiment runs
 outputs/runs/fasterrcnn_resnet50_fpn_640_test/
 
-# Local agent/editor folders
-.agents/
-.vscode/
-
+# Keep tracked reports, final artifacts, experiment archive, and final model weights
+!outputs/reports/
+!outputs/final_artifacts/
+!outputs/runs/
+!models/
+!models/**/*.pt
+!models/**/*.pth

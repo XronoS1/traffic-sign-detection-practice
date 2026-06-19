@@ -6,6 +6,7 @@ services:
       - "8000:8000"
     volumes:
       - ./outputs:/app/outputs
+      - ./models:/app/models:ro
       - ./service/media:/app/service/media
       - ./service/db.sqlite3:/app/service/db.sqlite3
       - ./smoke_tests:/app/smoke_tests
